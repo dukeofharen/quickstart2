@@ -1,0 +1,58 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ducode.QS2", "Ducode.QS2\Ducode.QS2.csproj", "{C745A83B-CC6D-4DCA-B3FB-4AC5EB18DE41}"
+	ProjectSection(ProjectDependencies) = postProject
+		{C4424427-596F-431A-A302-5B1A107A0EDD} = {C4424427-596F-431A-A302-5B1A107A0EDD}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ducode.QS2.Business", "Ducode.QS2.Business\Ducode.QS2.Business.csproj", "{5EA7BB05-E31B-4505-A8BC-5142D141E6E9}"
+	ProjectSection(ProjectDependencies) = postProject
+		{C4424427-596F-431A-A302-5B1A107A0EDD} = {C4424427-596F-431A-A302-5B1A107A0EDD}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ducode.QS2.Data", "Ducode.QS2.Data\Ducode.QS2.Data.csproj", "{3AB90DCE-66BB-4CC0-BCA1-0B81047537F6}"
+	ProjectSection(ProjectDependencies) = postProject
+		{C4424427-596F-431A-A302-5B1A107A0EDD} = {C4424427-596F-431A-A302-5B1A107A0EDD}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ducode.QS2.Entities", "Ducode.QS2.Entities\Ducode.QS2.Entities.csproj", "{6ED6B50A-9764-4469-854E-9C1840B2C33D}"
+	ProjectSection(ProjectDependencies) = postProject
+		{C4424427-596F-431A-A302-5B1A107A0EDD} = {C4424427-596F-431A-A302-5B1A107A0EDD}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ducode.QS2.PortableResources", "Ducode.QS2.PortableResources\Ducode.QS2.PortableResources.csproj", "{C4424427-596F-431A-A302-5B1A107A0EDD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C745A83B-CC6D-4DCA-B3FB-4AC5EB18DE41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C745A83B-CC6D-4DCA-B3FB-4AC5EB18DE41}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C745A83B-CC6D-4DCA-B3FB-4AC5EB18DE41}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C745A83B-CC6D-4DCA-B3FB-4AC5EB18DE41}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5EA7BB05-E31B-4505-A8BC-5142D141E6E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5EA7BB05-E31B-4505-A8BC-5142D141E6E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5EA7BB05-E31B-4505-A8BC-5142D141E6E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5EA7BB05-E31B-4505-A8BC-5142D141E6E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3AB90DCE-66BB-4CC0-BCA1-0B81047537F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3AB90DCE-66BB-4CC0-BCA1-0B81047537F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3AB90DCE-66BB-4CC0-BCA1-0B81047537F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3AB90DCE-66BB-4CC0-BCA1-0B81047537F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6ED6B50A-9764-4469-854E-9C1840B2C33D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6ED6B50A-9764-4469-854E-9C1840B2C33D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6ED6B50A-9764-4469-854E-9C1840B2C33D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6ED6B50A-9764-4469-854E-9C1840B2C33D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4424427-596F-431A-A302-5B1A107A0EDD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4424427-596F-431A-A302-5B1A107A0EDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4424427-596F-431A-A302-5B1A107A0EDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4424427-596F-431A-A302-5B1A107A0EDD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

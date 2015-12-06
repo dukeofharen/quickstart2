@@ -1,0 +1,178 @@
+﻿using Ducode.QS2.Business;
+using Ducode.QS2.Entities;
+using Ducode.QS2.PortableResources;
+using System;
+using System.Windows.Forms;
+
+namespace Ducode.QS2.Views
+{
+    public partial class ManageView : Form
+    {
+        private readonly ISettingsManager _settingsManager;
+        private readonly IQSCommandManager _qsCommandManager;
+        private readonly ICommandRunner _commandRunner;
+        private readonly TableLayoutPanel _table;
+        private int _y = 0;
+
+        public MainForm MainForm { get; set; }
+
+        public ManageView(ISettingsManager settingsManager, IQSCommandManager qsCommandManager, ICommandRunner commandRunner)
+        {
+            _settingsManager = settingsManager;
+            _qsCommandManager = qsCommandManager;
+            _commandRunner = commandRunner;
+            _table = new TableLayoutPanel();
+
+            InitializeComponent();
+        }
+
+        protected override void OnLoad(EventArgs e)
+        {
+            InitializeTable();
+            Text = Strings.ManageFormTitle;
+            titleLabel.Text = Strings.Commands;
+            selectFolderButton.Text = Strings.SelectItemsFolder;
+            addCommandButton.Text = Strings.AddCommand;
+            saveButton.Text = Strings.Save;
+            managePanel.Controls.Add(_table);
+
+            var settings = _settingsManager.GetSettings();
+            itemsFolderLocation.Text = settings.ItemsFolder;
+            selectFolderButton.Click += new EventHandler((object sender, EventArgs args) =>
+            {
+                var dialog = new FolderBrowserDialog();
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    itemsFolderLocation.Text = dialog.SelectedPath;
+                    settings.ItemsFolder = dialog.SelectedPath;
+                    _settingsManager.Update(settings);
+                    InitializeTable();
+                    MainForm.RefreshItems();
+                }
+            });
+        }
+
+        private void InitializeTable()
+        {
+            ClearTable();
+
+            var commands = _qsCommandManager.GetAll();
+
+            _table.Width = 500;
+            _table.Height = 50;
+            _table.RowCount = 0;
+
+            _y = 0;
+
+            _table.Controls.Add(new Label()
+            {
+                Text = Strings.Name
+            }, 0, _y);
+            _table.Controls.Add(new Label()
+            {
+                Text = Strings.Command
+            }, 1, _y);
+            _table.Controls.Add(new Label()
+            {
+                Text = Strings.Actions
+            }, 2, _y);
+
+            _y++;
+            _table.Height += 28;
+            _table.RowCount++;
+
+            foreach (var command in commands)
+            {
+                AddRow(command);
+            }
+        }
+
+        private void ClearTable()
+        {
+            _table.RowStyles.Clear();
+            _table.Controls.Clear();
+        }
+
+        private void DeleteCommand(QSCommand command)
+        {
+            if (MessageBox.Show(Strings.AreYouSure, Strings.Delete, MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                _qsCommandManager.Delete(command.ID);
+                InitializeTable();
+                MainForm.RefreshItems();
+            }
+        }
+
+        private void AddRow()
+        {
+            AddRow(new QSCommand()
+            {
+                ID = Guid.NewGuid()
+            });
+        }
+
+        private void AddRow(QSCommand command)
+        {
+            _table.Controls.Add(new TextBox()
+            {
+                Text = command.Name,
+                Width = 200,
+                Tag = command
+            }, 0, _y);
+
+            _table.Controls.Add(new TextBox()
+            {
+                Text = command.Command,
+                Width = 200,
+                Tag = command
+            }, 1, _y);
+
+            var button = new Button()
+            {
+                Text = Strings.Delete,
+                Tag = command
+            };
+            button.Click += new EventHandler((object sender, EventArgs args) =>
+            {
+                DeleteCommand((QSCommand)((Button)sender).Tag);
+            });
+            _table.Controls.Add(button, 2, _y);
+            _y++;
+            _table.Height += 28;
+            _table.RowCount++;
+        }
+
+        private void addCommandButton_Click(object sender, EventArgs e)
+        {
+            AddRow();
+        }
+
+        private void saveButton_Click(object sender, EventArgs e)
+        {
+            for (int row = 0; row < _table.RowCount; row++)
+            {
+                var control1 = _table.GetControlFromPosition(0, row);
+                var control2 = _table.GetControlFromPosition(1, row);
+                if(control1 is TextBox && control2 is TextBox)
+                {
+                    if (!string.IsNullOrEmpty(control1.Text) && !string.IsNullOrEmpty(control2.Text))
+                    {
+                        var command = (QSCommand)control1.Tag;
+                        command.Name = control1.Text;
+                        command.Command = control2.Text;
+                        if (_qsCommandManager.Get(command.ID) == null)
+                        {
+                            _qsCommandManager.Add(command);
+                        }
+                        else
+                        {
+                            _qsCommandManager.Update(command);
+                        }
+                    }
+                }
+            }
+            MainForm.RefreshItems();
+            Close();
+        }
+    }
+}

@@ -121,7 +121,9 @@
     <value>About</value>
   </data>
   <data name="AboutText" xml:space="preserve">
-    <value>(c) 2015 Duco Winterwerp
+    <value>QuickStart2 v{0}
+
+(c) 2015 Duco Winterwerp
 ducode.org
 
 Icon by GraphicLoads
@@ -180,6 +182,9 @@ http://www.iconarchive.com/show/100-flat-2-icons-by-graphicloads/arrow-next-2-ic
   </data>
   <data name="SettingsNull" xml:space="preserve">
     <value>Settings object is null</value>
+  </data>
+  <data name="Test" xml:space="preserve">
+    <value>Test</value>
   </data>
   <data name="TrayIconToolTipText" xml:space="preserve">
     <value>QS2</value>

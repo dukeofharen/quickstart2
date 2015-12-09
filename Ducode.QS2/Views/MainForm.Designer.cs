@@ -39,6 +39,7 @@
             this.trayIon.ContextMenuStrip = this.trayIconMenu;
             this.trayIon.Icon = ((System.Drawing.Icon)(resources.GetObject("trayIon.Icon")));
             this.trayIon.Visible = true;
+            this.trayIon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.trayIon_MouseDoubleClick);
             // 
             // trayIconMenu
             // 

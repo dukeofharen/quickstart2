@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using Microsoft.Practices.Unity;
 using Ducode.QS2.PortableResources;
 using System.Drawing;
+using System.Reflection;
 
 namespace Ducode.QS2.Views
 {
@@ -97,12 +98,18 @@ namespace Ducode.QS2.Views
 
         private void About()
         {
-            MessageBox.Show(Strings.AboutText, Strings.About);
+            string text = string.Format(Strings.AboutText, Assembly.GetExecutingAssembly().GetName().Version);
+            MessageBox.Show(text, Strings.About);
         }
 
         private void Exit()
         {
             Application.Exit();
+        }
+
+        private void trayIon_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            Manage();
         }
         #endregion
     }

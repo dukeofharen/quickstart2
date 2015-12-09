@@ -42,7 +42,7 @@
             this.managePanel.AutoScroll = true;
             this.managePanel.Location = new System.Drawing.Point(12, 84);
             this.managePanel.Name = "managePanel";
-            this.managePanel.Size = new System.Drawing.Size(501, 351);
+            this.managePanel.Size = new System.Drawing.Size(647, 351);
             this.managePanel.TabIndex = 0;
             // 
             // saveButton
@@ -92,7 +92,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(524, 482);
+            this.ClientSize = new System.Drawing.Size(671, 482);
             this.Controls.Add(this.addCommandButton);
             this.Controls.Add(this.itemsFolderLocation);
             this.Controls.Add(this.selectFolderButton);

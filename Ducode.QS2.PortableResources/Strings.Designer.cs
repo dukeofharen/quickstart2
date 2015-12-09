@@ -70,7 +70,9 @@ namespace Ducode.QS2.PortableResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to (c) 2015 Duco Winterwerp
+        ///   Looks up a localized string similar to QuickStart2 v{0}
+        ///
+        ///(c) 2015 Duco Winterwerp
         ///ducode.org
         ///
         ///Icon by GraphicLoads
@@ -241,6 +243,15 @@ namespace Ducode.QS2.PortableResources {
         public static string SettingsNull {
             get {
                 return ResourceManager.GetString("SettingsNull", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Test.
+        /// </summary>
+        public static string Test {
+            get {
+                return ResourceManager.GetString("Test", resourceCulture);
             }
         }
         

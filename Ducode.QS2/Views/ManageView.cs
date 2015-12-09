@@ -13,6 +13,7 @@ namespace Ducode.QS2.Views
         private readonly ICommandRunner _commandRunner;
         private readonly TableLayoutPanel _table;
         private int _y = 0;
+        private const int _rowHeight = 28;
 
         public MainForm MainForm { get; set; }
 
@@ -58,8 +59,9 @@ namespace Ducode.QS2.Views
 
             var commands = _qsCommandManager.GetAll();
 
-            _table.Width = 500;
-            _table.Height = 50;
+            int newTableHeight = 50;
+
+            _table.Width = managePanel.Width - 50;
             _table.RowCount = 0;
 
             _y = 0;
@@ -78,13 +80,15 @@ namespace Ducode.QS2.Views
             }, 2, _y);
 
             _y++;
-            _table.Height += 28;
+            _table.Height += _rowHeight;
             _table.RowCount++;
 
             foreach (var command in commands)
             {
                 AddRow(command);
+                newTableHeight += _rowHeight;
             }
+            _table.Height = newTableHeight;
         }
 
         private void ClearTable()
@@ -127,24 +131,37 @@ namespace Ducode.QS2.Views
                 Tag = command
             }, 1, _y);
 
-            var button = new Button()
+            var commandTestButton = new Button()
+            {
+                Text = Strings.Test,
+                Tag = command.Command
+            };
+            commandTestButton.Click += new EventHandler((sender, args) =>
+            {
+                _commandRunner.RunCommand((string)((Button)sender).Tag);
+            });
+            _table.Controls.Add(commandTestButton, 2, _y);
+
+            var deleteButton = new Button()
             {
                 Text = Strings.Delete,
                 Tag = command
             };
-            button.Click += new EventHandler((object sender, EventArgs args) =>
+            deleteButton.Click += new EventHandler((sender, args) =>
             {
                 DeleteCommand((QSCommand)((Button)sender).Tag);
             });
-            _table.Controls.Add(button, 2, _y);
+            _table.Controls.Add(deleteButton, 3, _y);
+
             _y++;
-            _table.Height += 28;
             _table.RowCount++;
         }
 
         private void addCommandButton_Click(object sender, EventArgs e)
         {
             AddRow();
+            _table.Height += _rowHeight;
+            //managePanel.ScrollToBottom();
         }
 
         private void saveButton_Click(object sender, EventArgs e)

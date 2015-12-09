@@ -5,4 +5,7 @@ before_build:
 
 build:
   verbosity: minimal
-  publish_wap: true
+
+artifacts:
+  - path: Ducode.QS2.Business\bin\$(configuration)
+    name: qs2

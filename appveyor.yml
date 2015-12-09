@@ -7,5 +7,5 @@ build:
   verbosity: minimal
 
 artifacts:
-  - path: Ducode.QS2.Business\bin\$(configuration)
+  - path: Ducode.QS2\bin\$(configuration)
     name: qs2

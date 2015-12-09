@@ -112,7 +112,6 @@
     <EmbeddedResource Include="Views\ManageView.resx">
       <DependentUpon>ManageView.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="appveyor.yml" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

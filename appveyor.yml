@@ -2,10 +2,20 @@ configuration: Release
 
 before_build:
   - nuget restore
+  
+assembly_info:
+  patch: true
+  file: AssemblyInfo.*
+  assembly_version: "0.1.{build}"
+  assembly_file_version: "0.1.{build}"
+  assembly_informational_version: "0.1.{build}"
 
 build:
   verbosity: minimal
 
+after_build:
+  - ps: powershell .\AfterBuild.ps1
+  
 artifacts:
   - path: Ducode.QS2\bin\$(configuration)
     name: qs2

@@ -1,1 +1,1 @@
-Install-ChocolateyZipPackage 'dotlocal' 'https://github.com/dukeofharen/dotlocal/releases/download/v[VERSION]/dotlocal.zip'  "$(Split-Path -parent $MyInvocation.MyCommand.Definition)"
+Install-ChocolateyZipPackage 'quickstart2' 'https://github.com/dukeofharen/quickstart2/releases/download/v[VERSION]/quickstart2.zip'  "$(Split-Path -parent $MyInvocation.MyCommand.Definition)"

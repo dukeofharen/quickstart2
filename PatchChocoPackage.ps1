@@ -1,5 +1,5 @@
 $version = (Get-Childitem env:app_version).Value
-$nuspecFile = ".\choco\dotlocal.nuspec"
+$nuspecFile = ".\choco\quickstart2.nuspec"
 $installPsFile = ".\choco\tools\chocolateyinstall.ps1"
 
 (Get-Content $nuspecFile).replace('[VERSION]', $version) | Set-Content $nuspecFile

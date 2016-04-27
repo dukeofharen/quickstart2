@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata>
+    <id>quickstart2</id>
+    <title>QuickStart2</title>
+    <version>[VERSION]</version>
+    <authors>Duco Winterwerp</authors>
+    <owners>Duco Winterwerp</owners>
+    <summary>Lightweight command starter</summary>
+    <description>QuickStart2 is a lightweight tool which resides in the system tray of Windows. Quickly add commands to its menu.
+    </description>
+    <projectUrl>https://github.com/dukeofharen/quickstart2</projectUrl>
+    <tags>quickstart2 quickstart command cmd windows .net</tags>
+    <copyright>Duco Winterwerp</copyright>
+    <licenseUrl>https://opensource.org/licenses/MIT</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+  </metadata>
+  <files>
+    <file src="tools\**" target="tools" />
+  </files>
+</package>

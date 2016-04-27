@@ -18,10 +18,15 @@ build:
 
 after_build:
   - ps: powershell .\AfterBuild.ps1
+  - ps: powershell .\PatchChocoPackage.ps1
+  - cmd: choco pack .\choco\quickstart2.nuspec
   
 artifacts:
   - path: Ducode.QS2\bin\$(configuration)
     name: qs2
+    
+  - path: '.\quickstart2.$(app_version).nupkg'
+    name: quickstart2-nupkg
 
 deploy:
   release: v$(app_version)

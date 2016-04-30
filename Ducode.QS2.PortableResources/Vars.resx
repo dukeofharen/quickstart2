@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="CommandFormat" xml:space="preserve">
-    <value>/C cd {1} {0} &amp;&amp; {2}</value>
+    <value>cmd /C cd {1} {0} &amp;&amp; {2}</value>
   </data>
   <data name="ItemsJsonFileName" xml:space="preserve">
     <value>cmd.json</value>

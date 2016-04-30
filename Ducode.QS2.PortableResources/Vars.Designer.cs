@@ -61,7 +61,7 @@ namespace Ducode.QS2.PortableResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to /C cd {1} {0} &amp;&amp; {2}.
+        ///   Looks up a localized string similar to cmd /C cd {1} {0} &amp;&amp; {2}.
         /// </summary>
         public static string CommandFormat {
             get {

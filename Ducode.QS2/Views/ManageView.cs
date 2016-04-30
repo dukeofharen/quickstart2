@@ -3,6 +3,8 @@ using Ducode.QS2.Entities;
 using Ducode.QS2.PortableResources;
 using System;
 using System.Windows.Forms;
+using System.Linq;
+using System.Collections.Generic;
 
 namespace Ducode.QS2.Views
 {
@@ -128,17 +130,22 @@ namespace Ducode.QS2.Views
             {
                 Text = command.Command,
                 Width = 200,
-                Tag = command
+                Tag = string.Format("command-{0}", _y)
             }, 1, _y);
 
             var commandTestButton = new Button()
             {
                 Text = Strings.Test,
-                Tag = command.Command
+                Tag = _y
             };
             commandTestButton.Click += new EventHandler((sender, args) =>
             {
-                _commandRunner.RunCommand((string)((Button)sender).Tag);
+				var control = _table.Controls
+									 .OfType<TextBox>()
+									 .Where(c => c.Tag.ToString() == string.Format("command-{0}", ((Button)sender).Tag))
+									 .FirstOrDefault();
+				string commandText = control == null ? string.Empty : control.Text;
+                _commandRunner.RunCommand(commandText);
             });
             _table.Controls.Add(commandTestButton, 2, _y);
 

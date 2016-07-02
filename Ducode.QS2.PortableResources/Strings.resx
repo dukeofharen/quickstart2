@@ -159,6 +159,9 @@ http://www.iconarchive.com/show/100-flat-2-icons-by-graphicloads/arrow-next-2-ic
   <data name="Exit" xml:space="preserve">
     <value>Exit</value>
   </data>
+  <data name="Folder" xml:space="preserve">
+    <value>Folder</value>
+  </data>
   <data name="ItemsFolderDoesntExist" xml:space="preserve">
     <value>The items folder '{0}' does not exist.</value>
   </data>

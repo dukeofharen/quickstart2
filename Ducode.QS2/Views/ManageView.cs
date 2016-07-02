@@ -4,7 +4,6 @@ using Ducode.QS2.PortableResources;
 using System;
 using System.Windows.Forms;
 using System.Linq;
-using System.Collections.Generic;
 
 namespace Ducode.QS2.Views
 {
@@ -78,8 +77,12 @@ namespace Ducode.QS2.Views
             }, 1, _y);
             _table.Controls.Add(new Label()
             {
-                Text = Strings.Actions
+                Text = Strings.Folder
             }, 2, _y);
+            _table.Controls.Add(new Label()
+            {
+                Text = Strings.Actions
+            }, 3, _y);
 
             _y++;
             _table.Height += _rowHeight;
@@ -133,6 +136,12 @@ namespace Ducode.QS2.Views
                 Tag = string.Format("command-{0}", _y)
             }, 1, _y);
 
+            _table.Controls.Add(new TextBox()
+            {
+                Text = command.Folder,
+                Width = 200
+            }, 2, _y);
+
             var commandTestButton = new Button()
             {
                 Text = Strings.Test,
@@ -147,7 +156,7 @@ namespace Ducode.QS2.Views
 				string commandText = control == null ? string.Empty : control.Text;
                 _commandRunner.RunCommand(commandText);
             });
-            _table.Controls.Add(commandTestButton, 2, _y);
+            _table.Controls.Add(commandTestButton, 3, _y);
 
             var deleteButton = new Button()
             {
@@ -158,7 +167,7 @@ namespace Ducode.QS2.Views
             {
                 DeleteCommand((QSCommand)((Button)sender).Tag);
             });
-            _table.Controls.Add(deleteButton, 3, _y);
+            _table.Controls.Add(deleteButton, 4, _y);
 
             _y++;
             _table.RowCount++;
@@ -168,7 +177,6 @@ namespace Ducode.QS2.Views
         {
             AddRow();
             _table.Height += _rowHeight;
-            //managePanel.ScrollToBottom();
         }
 
         private void saveButton_Click(object sender, EventArgs e)
@@ -177,6 +185,7 @@ namespace Ducode.QS2.Views
             {
                 var control1 = _table.GetControlFromPosition(0, row);
                 var control2 = _table.GetControlFromPosition(1, row);
+                var control3 = _table.GetControlFromPosition(2, row);
                 if(control1 is TextBox && control2 is TextBox)
                 {
                     if (!string.IsNullOrEmpty(control1.Text) && !string.IsNullOrEmpty(control2.Text))
@@ -184,6 +193,7 @@ namespace Ducode.QS2.Views
                         var command = (QSCommand)control1.Tag;
                         command.Name = control1.Text;
                         command.Command = control2.Text;
+                        command.Folder = control3.Text;
                         if (_qsCommandManager.Get(command.ID) == null)
                         {
                             _qsCommandManager.Add(command);

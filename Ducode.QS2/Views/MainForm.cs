@@ -6,6 +6,7 @@ using Microsoft.Practices.Unity;
 using Ducode.QS2.PortableResources;
 using System.Drawing;
 using System.Reflection;
+using System.Linq;
 
 namespace Ducode.QS2.Views
 {
@@ -38,6 +39,18 @@ namespace Ducode.QS2.Views
             trayIon.Text = Strings.TrayIconToolTipText;
             trayIconMenu.Items.Clear();
             var commands = _qsCommandManager.GetAll();
+            var folders = commands.Select(c => c.Folder)
+                                  .Where(f => !string.IsNullOrEmpty(f))
+                                  .Select(f => new ToolStripMenuItem()
+                                  {
+                                      Text = f
+                                  })
+                                  .OrderBy(i => i.Text)
+                                  .ToList();
+            foreach(var folder in folders)
+            {
+                trayIconMenu.Items.Add(folder);
+            }
             foreach (var command in commands)
             {
                 var menuItem = new ToolStripMenuItem()
@@ -53,7 +66,16 @@ namespace Ducode.QS2.Views
                         _commandRunner.RunCommand(clickedCommand.Command);
                     }
                 });
-                trayIconMenu.Items.Add(menuItem);
+
+                var folder = folders.FirstOrDefault(f => f.Text == command.Folder);
+                if (folder != null)
+                {
+                    folder.DropDownItems.Add(menuItem);
+                }
+                else
+                {
+                    trayIconMenu.Items.Add(menuItem);
+                }
             }
 
             trayIconMenu.Items.Add(new ToolStripSeparator());

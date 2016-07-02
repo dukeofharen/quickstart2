@@ -175,6 +175,15 @@ namespace Ducode.QS2.PortableResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Folder.
+        /// </summary>
+        public static string Folder {
+            get {
+                return ResourceManager.GetString("Folder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The items folder &apos;{0}&apos; does not exist..
         /// </summary>
         public static string ItemsFolderDoesntExist {

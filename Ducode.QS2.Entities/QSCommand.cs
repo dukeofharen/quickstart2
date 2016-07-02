@@ -7,5 +7,6 @@ namespace Ducode.QS2.Entities
         public Guid ID { get; set; }
         public string Name { get; set; }
         public string Command { get; set; }
+        public string Folder { get; set; }
     }
 }

@@ -10,7 +10,7 @@
     <description>QuickStart2 is a lightweight tool which resides in the system tray of Windows. Quickly add commands to its menu.
     </description>
     <projectUrl>https://github.com/dukeofharen/quickstart2</projectUrl>
-    <tags>quickstart2 quickstart command cmd windows .net</tags>
+    <tags>quickstart2 command cmd</tags>
     <copyright>Duco Winterwerp</copyright>
     <licenseUrl>https://opensource.org/licenses/MIT</licenseUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>

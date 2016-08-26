@@ -41,6 +41,7 @@ namespace Ducode.QS2.Views
             var commands = _qsCommandManager.GetAll();
             var folders = commands.Select(c => c.Folder)
                                   .Where(f => !string.IsNullOrEmpty(f))
+                                  .Distinct()
                                   .Select(f => new ToolStripMenuItem()
                                   {
                                       Text = f

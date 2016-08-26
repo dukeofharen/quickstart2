@@ -151,7 +151,7 @@ namespace Ducode.QS2.Views
             {
 				var control = _table.Controls
 									 .OfType<TextBox>()
-									 .Where(c => c.Tag.ToString() == string.Format("command-{0}", ((Button)sender).Tag))
+									 .Where(c => c.Tag != null && c.Tag.ToString() == string.Format("command-{0}", ((Button)sender).Tag))
 									 .FirstOrDefault();
 				string commandText = control == null ? string.Empty : control.Text;
                 _commandRunner.RunCommand(commandText);
